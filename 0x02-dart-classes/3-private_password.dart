@@ -14,6 +14,6 @@ class Password {
   }
 
   String toString() {
-    return 'Your Password is $_password';
+    return 'Your Password is: $_password';
   }
 }
