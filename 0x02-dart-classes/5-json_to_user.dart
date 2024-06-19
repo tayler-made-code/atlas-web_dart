@@ -9,7 +9,7 @@ class User {
 
   // method to return user as json
   String toJson() {
-    return '{id : $id, name: $name, age: $age, height: $height}';
+    return '{id: $id, name: $name, age: $age, height: $height}';
   }
 
   // method to create user from json
@@ -18,6 +18,6 @@ class User {
   }
 
   String toString() {
-    return 'User(id: $id, name: $name, age: $age, height: $height)';
+    return 'User(id : $id, name: $name, age: $age, height: $height)';
   }
 }
