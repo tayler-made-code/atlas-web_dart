@@ -6,4 +6,5 @@ main() {
   print(longestPalindrome("aaabvf"));
   print(longestPalindrome(""));
   print(longestPalindrome("racecar"));
+  print(longestPalindrome("aa"));
 }
