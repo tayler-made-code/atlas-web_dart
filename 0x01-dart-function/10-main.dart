@@ -4,4 +4,6 @@ main() {
   print(longestPalindrome("abcde"));
   print(longestPalindrome("azeghjhg"));
   print(longestPalindrome("aaabvf"));
+  print(longestPalindrome(""));
+  print(longestPalindrome("racecar"));
 }
