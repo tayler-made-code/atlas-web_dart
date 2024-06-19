@@ -8,6 +8,6 @@ class User {
 
   // method to return user as json
   String toJson() {
-    return '{"name": "$name", "age": $age, "height": $height}';
+    return '{name: $name, age: $age, height: $height}';
   }
 }
