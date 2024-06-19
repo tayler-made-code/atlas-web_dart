@@ -7,6 +7,6 @@ Future<void> getUser() async {
     Map<String, dynamic> user = json.decode(userData);
     print(user);
   } catch (e) {
-    print(e);
+    print('error caught: $e');
   }
 }
