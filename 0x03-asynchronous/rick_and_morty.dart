@@ -2,31 +2,34 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<void> printRmCharacters() async {
+  final url = 'https://rickandmortyapi.com/api/character';
+
   try {
-    final url = 'https://rickandmortyapi.com/api/character';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final count = data['info']['count'];
-      print('count: $count');
-      print('info: ${data['info']}');
+      final results = data['results'];
 
-      final characterIds = List.generate(count, (index) => index + 1);
-      final characterIdsString = characterIds.join(',');
-
-      final fullUrl = 'https://rickandmortyapi.com/api/character/$characterIdsString';
-      // test the url
-      // print('$fullUrl');
-      final fullResponse = await http.get(Uri.parse(fullUrl));
-
-      if (fullResponse.statusCode == 200) {
-        final updatedData = json.decode(fullResponse.body);
-
-        for (var character in updatedData) {
-          print(character['name']);
-        }
+      for (var character in results) {
+        print(character['name']);
       }
+
+      // while (data['info']['next'] != null) {
+      //   final nextUrl = data['info']['next'];
+      //   final nextResponse = await http.get(Uri.parse(nextUrl));
+
+      //   if (nextResponse.statusCode == 200) {
+      //     final nextData = json.decode(nextResponse.body);
+      //     final nextResults = nextData['results'];
+
+      //     for (var character in nextResults) {
+      //       print(character['name']);
+      //     }
+
+      //     data['info']['next'] = nextData['info']['next'];
+      //   }
+      // }
     }
   } catch (error) {
     print('error caught: $error');
