@@ -1,7 +1,7 @@
 import '4-util.dart';
 import 'dart:convert';
 
-Future<double> calculateTotal() async {
+Future<num> calculateTotal() async {
   try {
     // Gets the user data by calling the provided function fetchUserData()
     String userData = await fetchUserData();
