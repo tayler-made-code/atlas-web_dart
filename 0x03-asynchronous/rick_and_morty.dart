@@ -9,25 +9,21 @@ Future<void> printRmCharacters() async {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final results = data['results'];
+      final count = data['info']['count'];
 
-      for (var character in results) {
-        print(character['name']);
-      }
+      final characterIds = List.generate(count, (index) => index + 1);
+      final characterIdsString = characterIds.join(',');
 
-      while (data['info']['next'] != null) {
-        final nextUrl = data['info']['next'];
-        final nextResponse = await http.get(Uri.parse(nextUrl));
+      final updatedUrl = 'https://rickandmortyapi.com/api/character/$characterIdsString';
+      //test the url
+      // print('$updatedUrl');
+      final updatedResponse = await http.get(Uri.parse(updatedUrl));
 
-        if (nextResponse.statusCode == 200) {
-          final nextData = json.decode(nextResponse.body);
-          final nextResults = nextData['results'];
+      if (updatedResponse.statusCode == 200) {
+        final updatedData = json.decode(updatedResponse.body);
 
-          for (var character in nextResults) {
-            print(character['name']);
-          }
-
-          data['info']['next'] = nextData['info']['next'];
+        for (var character in updatedData) {
+          print(character['name']);
         }
       }
     }
